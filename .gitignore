@@ -4,6 +4,7 @@ obj/
 [Dd]ebug/
 [Rr]elease/
 # Configurações com segredos locais
+appsettings.json
 appsettings.Development.json
 appsettings.local.json
 .env
