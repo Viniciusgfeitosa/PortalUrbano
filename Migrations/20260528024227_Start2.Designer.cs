@@ -12,8 +12,8 @@ using portal_urbano.Data;
 namespace portal_urbano.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260526232559_AddPasswordResetToUsuario")]
-    partial class AddPasswordResetToUsuario
+    [Migration("20260528024227_Start2")]
+    partial class Start2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -199,22 +199,22 @@ namespace portal_urbano.Migrations
 
             modelBuilder.Entity("portal_urbano.Models.Gostei", b =>
                 {
-                    b.Property<long>("LikeId")
+                    b.Property<int>("LikeId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("LikeId"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("LikeId"));
 
                     b.Property<DateTime?>("CriadoEm")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-                    b.Property<long>("DenunciaId")
-                        .HasColumnType("bigint");
+                    b.Property<int>("DenunciaId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("UsuarioId")
-                        .HasColumnType("bigint");
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
 
                     b.HasKey("LikeId");
 
@@ -271,10 +271,18 @@ namespace portal_urbano.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(0);
 
+                    b.Property<string>("Bairro")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
                     b.Property<bool>("Banido")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("tinyint(1)")
                         .HasDefaultValue(false);
+
+                    b.Property<string>("Cidade")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<DateTime?>("CriadoEm")
                         .ValueGeneratedOnAdd()
@@ -293,14 +301,16 @@ namespace portal_urbano.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("PasswordResetToken")
-                        .HasColumnType("longtext");
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("SenhaHash")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Telefone")
-                        .HasColumnType("longtext");
+                    b.Property<string>("Uf")
+                        .HasMaxLength(2)
+                        .HasColumnType("varchar(2)");
 
                     b.HasKey("IdUsuario");
 

@@ -196,22 +196,22 @@ namespace portal_urbano.Migrations
 
             modelBuilder.Entity("portal_urbano.Models.Gostei", b =>
                 {
-                    b.Property<long>("LikeId")
+                    b.Property<int>("LikeId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("LikeId"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("LikeId"));
 
                     b.Property<DateTime?>("CriadoEm")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-                    b.Property<long>("DenunciaId")
-                        .HasColumnType("bigint");
+                    b.Property<int>("DenunciaId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("UsuarioId")
-                        .HasColumnType("bigint");
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
 
                     b.HasKey("LikeId");
 

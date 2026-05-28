@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace portal_urbano.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Start2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -48,11 +48,18 @@ namespace portal_urbano.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     SenhaHash = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Telefone = table.Column<string>(type: "longtext", nullable: true)
+                    Cidade = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Bairro = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Uf = table.Column<string>(type: "varchar(2)", maxLength: 2, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Avisos = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     Banido = table.Column<bool>(type: "tinyint(1)", nullable: false, defaultValue: false),
-                    CriadoEm = table.Column<DateTime>(type: "datetime(6)", nullable: true, defaultValueSql: "CURRENT_TIMESTAMP(6)")
+                    CriadoEm = table.Column<DateTime>(type: "datetime(6)", nullable: true, defaultValueSql: "CURRENT_TIMESTAMP(6)"),
+                    PasswordResetToken = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PasswordResetExpires = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -145,10 +152,10 @@ namespace portal_urbano.Migrations
                 name: "gostei",
                 columns: table => new
                 {
-                    LikeId = table.Column<long>(type: "bigint", nullable: false)
+                    LikeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    UsuarioId = table.Column<long>(type: "bigint", nullable: false),
-                    DenunciaId = table.Column<long>(type: "bigint", nullable: false),
+                    UsuarioId = table.Column<int>(type: "int", nullable: false),
+                    DenunciaId = table.Column<int>(type: "int", nullable: false),
                     CriadoEm = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "CURRENT_TIMESTAMP")
                 },
                 constraints: table =>
