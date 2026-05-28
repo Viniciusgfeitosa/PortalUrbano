@@ -53,6 +53,17 @@ builder.Services.AddSingleton(supabaseClient);
 
 var app = builder.Build();
 
+// Middleware para responder 200 OK em requisições HEAD no root (evita erro 405 no health check do Render)
+app.Use(async (context, next) =>
+{
+    if (context.Request.Method == "HEAD" && context.Request.Path == "/")
+    {
+        context.Response.StatusCode = 200;
+        return;
+    }
+    await next();
+});
+
 // Aplicar as migrações automáticas no banco de dados
 using (var scope = app.Services.CreateScope())
 {
