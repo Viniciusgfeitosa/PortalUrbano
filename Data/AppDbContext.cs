@@ -101,9 +101,9 @@ namespace portal_urbano.Data
             modelBuilder.Entity<Gostei>(entity =>
             {
                 entity.ToTable("gostei");
-                entity.Property(g => g.LikeId).HasColumnType("bigint");
-                entity.Property(g => g.UsuarioId).HasColumnType("bigint");
-                entity.Property(g => g.DenunciaId).HasColumnType("bigint");
+entity.Property(g => g.LikeId).HasColumnType("int");
+entity.Property(g => g.UsuarioId).HasColumnType("int");
+entity.Property(g => g.DenunciaId).HasColumnType("int");
                 entity.Property(g => g.CriadoEm)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("CURRENT_TIMESTAMP");
